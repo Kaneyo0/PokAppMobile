@@ -23,5 +23,7 @@ namespace PokApp.Models
         {
             return _database.InsertAsync(pokemon);
         }
+
+ 
     }
 }

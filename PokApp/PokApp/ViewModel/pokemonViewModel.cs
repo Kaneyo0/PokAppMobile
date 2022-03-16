@@ -1,11 +1,8 @@
-﻿using System;
+﻿using PokeApiNet;
 using System.Collections.Generic;
-using System.Text;
-using PokeApiNet;
-using PokApp.Models;
 using System.Collections.ObjectModel;
-using Xamarin.Forms;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace PokApp.ViewModel
 {
@@ -14,7 +11,7 @@ namespace PokApp.ViewModel
         private static PokemonViewModel _instance = new PokemonViewModel();
         public static PokemonViewModel instance { get { return _instance; } }
         PokeApiClient pokeClient = new PokeApiClient();
-        public ObservableCollection<PokApp.Models.Pokemon> Pokemons
+        public ObservableCollection<Models.Pokemon> Pokemons
         {
             get { return GetValue<ObservableCollection<PokApp.Models.Pokemon>>(); }
             set { SetValue(value); }
@@ -26,17 +23,23 @@ namespace PokApp.ViewModel
 
             Device.BeginInvokeOnMainThread(async () =>
             {
-                for (int i = 1; i < 50; i++)
+
+                for (int i = 1; i <= 5; i++)
                 {
-                    var Types = new List<string>();
+                   
+                    var Types = "";
                     var Abilities = new List<string>();
                     var pokemonList = new List<Models.Pokemon>();
-                    var PokemonApi = await Task.Run(() => pokeClient.GetResourceAsync<PokeApiNet.Pokemon>(i));
-                    foreach(PokemonType Type in PokemonApi.Types)
+                    var PokemonApi = await Task.Run(() => pokeClient.GetResourceAsync<Pokemon>(i));
+                    foreach (PokemonType Type in PokemonApi.Types)
                     {
-                        Types.Add(Type.Type.Name);
+                        Types += Type.Type.Name;
                     }
-                    foreach (PokemonAbility Ability in PokemonApi.Abilities)
+                        /*foreach (PokemonType Type in PokemonApi.Types)
+                        {
+                            Types.Add(Type.Type.Name);
+                        }*/
+                        foreach (PokemonAbility Ability in PokemonApi.Abilities)
                     {
                         Abilities.Add(Ability.Ability.Name);
                     }
@@ -46,13 +49,14 @@ namespace PokApp.ViewModel
                         Picture = PokemonApi.Sprites.FrontDefault,
                         Height = PokemonApi.Height,
                         Weight = PokemonApi.Weight,
-                        Types = Types,
+                        Types = PokemonApi.Types[0].Type.Name,
                         Abilities = Abilities,
+                        HP = PokemonApi.Stats[0].BaseStat,
+                        Atk = PokemonApi.Stats[1].BaseStat,
+                        Def = PokemonApi.Stats[2].BaseStat,
                     });
                 }
-
             });
-
         }
     }
 }

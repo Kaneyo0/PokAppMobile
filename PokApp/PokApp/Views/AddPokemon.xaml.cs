@@ -1,9 +1,7 @@
 ﻿using Plugin.Media;
 using Plugin.Media.Abstractions;
 using PokApp.Models;
-using PokApp.ViewModel;
 using System;
-using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -23,21 +21,26 @@ namespace PokApp.Views
         {
             if (sender == heightSlider)
             {
-                heightLabel.Text = String.Format("Taille = {0:F2} cm", (int)args.NewValue);
+                heightLabel.Text = string.Format("Taille = {0:F2} cm", (int)args.NewValue);
             }
             else if (sender == weightSlider)
             {
-                weightLabel.Text = String.Format("Poids = {0:F2} kg", (int)args.NewValue);
+                weightLabel.Text = string.Format("Poids = {0:F2} kg", (int)args.NewValue);
+            }
+
+            else if (sender == hpSlider)
+            {
+                hpLabel.Text = string.Format("HP = {0:F2}", (int)args.NewValue);
             }
 
             else if (sender == atkSlider)
             {
-                atkLabel.Text = String.Format("Atk = {0:F2}", (int)args.NewValue);
+                atkLabel.Text = string.Format("Atk = {0:F2}", (int)args.NewValue);
             }
 
             else if (sender == defSlider)
             {
-                defLabel.Text = String.Format("Def = {0:F2}", (int)args.NewValue);
+                defLabel.Text = string.Format("Def = {0:F2}", (int)args.NewValue);
             }
         }
 
@@ -53,6 +56,10 @@ namespace PokApp.Views
                     Picture = imageSource[1],
                     Height = Convert.ToInt32(heightSlider.Value),
                     Weight = Convert.ToInt32(weightSlider.Value),
+                    HP = Convert.ToInt32(hpSlider.Value),
+                    Atk = Convert.ToInt32(atkSlider.Value),
+                    Def = Convert.ToInt32(defSlider.Value),
+
                 });
 
                 await DisplayAlert("Félicitations !", "Votre Pokémon a correctement été ajouté.", "OK");
@@ -61,8 +68,13 @@ namespace PokApp.Views
                 PokemonImage.Source = "";
                 heightSlider.Value = 0.0;
                 weightSlider.Value = 0.0;
+                hpSlider.Value = 0.0;
                 atkSlider.Value = 0.0;
                 defSlider.Value = 0.0;
+            }
+            else
+            {
+                await DisplayAlert("Oups !", "Vous avez oublié de choisir un nom à votre Pokemon.", "Je corrige cela");
             }
         }
     

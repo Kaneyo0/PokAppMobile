@@ -3,7 +3,6 @@ using System.IO;
 using PokApp.Models;
 using PokApp.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace PokApp
 {

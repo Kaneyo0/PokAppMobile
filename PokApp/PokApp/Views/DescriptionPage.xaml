@@ -7,16 +7,20 @@
             <Image HorizontalOptions="Center" WidthRequest="200" HeightRequest="200" Source="{Binding Picture}"></Image>
             <Label HorizontalOptions="Center" Margin="10" FontSize="Large" FontAttributes="Bold" TextColor="Black" Text="{Binding Name}"></Label>
             <Grid Margin="20,10,20,20">
-                <Label Grid.Row="0" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Taille"></Label>
-                <Label Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding Height}"></Label>
-                <Label Grid.Row="1" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Poids"></Label>
-                <Label Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding Weight}"></Label>
-                <Label Grid.Row="2" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Types"></Label>
-                <Label Grid.Row="2" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding TypesBlobbed}"></Label>
+                <Label Grid.Row="0" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Types"></Label>
+                <Label Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding Types}"></Label>
+                <Label Grid.Row="1" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Taille"></Label>
+                <Label Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding Height}"></Label>
+                <Label Grid.Row="2" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Poids"></Label>
+                <Label Grid.Row="2" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding Weight}"></Label>
                 <Label Grid.Row="3" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Abilités"></Label>
                 <Label Grid.Row="3" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding AbilitiesBlobbed}"></Label>
-                <Label Grid.Row="4" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Stats"></Label>
-                <Label Grid.Row="4" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding StatsBlobbed}"></Label>
+                <Label Grid.Row="4" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="HP"></Label>
+                <Label Grid.Row="4" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding HP}"></Label>
+                <Label Grid.Row="5" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Atk"></Label>
+                <Label Grid.Row="5" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding Atk}"></Label>
+                <Label Grid.Row="6" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Def"></Label>
+                <Label Grid.Row="6" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding Def}"></Label>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

@@ -31,6 +31,9 @@
             <Slider x:Name="weightSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="#f6d418" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="1000" Minimum="10" />
             <Label x:Name="weightLabel" />
 
+            <Slider x:Name="hpSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="#f6d418" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="1000" Minimum="10" />
+            <Label x:Name="hpLabel" />
+
             <Slider x:Name="atkSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="#f6d418" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="1000" Minimum="10" />
             <Label x:Name="atkLabel" />
 

@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SQLite;
-using SQLiteNetExtensions.Attributes;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace PokApp.Models
 {
@@ -15,9 +12,13 @@ namespace PokApp.Models
         public string Picture { get; set; }
         public int Height { get; set; }
         public int Weight { get; set; }
+        public int HP { get; set; }
+        public int Atk { get; set; }
+        public int Def { get; set; }
+        public string Types { get; set; }
         public string TypesBlobbed { get; set; }
         public string AbilitiesBlobbed { get; set; }
-        [Ignore]
+        /*[Ignore]
         public List<string> Types
         {
             get
@@ -28,7 +29,7 @@ namespace PokApp.Models
             {
                 TypesBlobbed = JsonConvert.SerializeObject(value);
             }
-        }
+        }*/
         [Ignore]
         public List<string> Abilities
         {

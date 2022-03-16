@@ -46,7 +46,7 @@ namespace PokApp.Views
         {
             if (!string.IsNullOrWhiteSpace(PokemonNameEntry.Text))
             {
-                string[] imageSource = PokemonImage.Source.ToString().Split(':');
+                string[] imageSource = PokemonImage.Source.ToString().Split(' ');
                 await App.Database.SavePokemonAsync(new Pokemon
                 {
                     Name = PokemonNameEntry.Text,
@@ -65,8 +65,7 @@ namespace PokApp.Views
                 defSlider.Value = 0.0;
             }
         }
-
-       
+    
         //Ajoute une image depuis la galerie
         private async void AddAttachments(object sender, EventArgs e)
         {

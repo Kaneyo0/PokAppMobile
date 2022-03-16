@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="PokApp.Views.ShellPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:PokApp.Views"
+    NavBarIsVisible="False">
+    <TabBar>
+        <Tab Title="Accueil" Icon="home.png">
+            <views:Home />
+        </Tab>
+        <Tab Title="Liste" Icon="list.png">
+            <views:Pokedex />
+        </Tab>
+        <Tab Title="Ajout" Icon="add.png">
+            <views:AddPokemon />
+        </Tab>
+    </TabBar>
+</Shell>

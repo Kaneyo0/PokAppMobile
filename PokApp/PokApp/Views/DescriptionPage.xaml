@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PokApp.Views.DescriptionPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Image HorizontalOptions="Center" WidthRequest="200" HeightRequest="200" Source="{Binding Picture}"></Image>
+            <Label HorizontalOptions="Center" Margin="10" FontSize="Large" FontAttributes="Bold" TextColor="Black" Text="{Binding Name}"></Label>
+            <Grid Margin="20,10,20,20">
+                <Label Grid.Row="0" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Taille"></Label>
+                <Label Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding Height}"></Label>
+                <Label Grid.Row="1" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Poids"></Label>
+                <Label Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding Weight}"></Label>
+                <Label Grid.Row="2" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Types"></Label>
+                <Label Grid.Row="2" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding TypesBlobbed}"></Label>
+                <Label Grid.Row="3" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Abilités"></Label>
+                <Label Grid.Row="3" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding AbilitiesBlobbed}"></Label>
+                <Label Grid.Row="4" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Stats"></Label>
+                <Label Grid.Row="4" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding StatsBlobbed}"></Label>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

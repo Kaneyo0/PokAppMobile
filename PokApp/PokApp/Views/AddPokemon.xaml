@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PokApp.Views.AddPokemon">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Slider">
+                <Setter Property="Maximum" Value="255" />
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Margin="20,35,20,20">
+        <Entry  x:Name="PokemonNameEntry"
+                MaxLength="60"
+                Placeholder="Entrer le nom du Pokémon"
+                PlaceholderColor="DarkGray" />
+
+        <Image x:Name="PokemonImage" HorizontalOptions="Center"  Source=""></Image>
+        
+        <Button x:Name="AddImageButton" Text="Ajouter une image" Clicked="AddAttachments" />
+
+        <StackLayout Margin="10">
+            <Slider x:Name="heightSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="#f6d418" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="600" Minimum="10" />
+            <Label x:Name="heightLabel" />
+
+            <Slider x:Name="weightSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="#f6d418" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="1000" Minimum="10" />
+            <Label x:Name="weightLabel" />
+
+            <Slider x:Name="atkSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="#f6d418" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="1000" Minimum="10" />
+            <Label x:Name="atkLabel" />
+
+            <Slider x:Name="defSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="#f6d418" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="1000" Minimum="10" />
+            <Label x:Name="defLabel" />
+
+            <Button Text="Ajouter Pokemon" Clicked="OnButtonClicked" />
+        </StackLayout>
+    </StackLayout>
+
+
+</ContentPage>

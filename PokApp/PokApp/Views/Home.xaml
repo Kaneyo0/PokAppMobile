@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PokApp.Views.Home"
+             BackgroundImage="environnement.png">
+
+    <ContentPage.Content>
+       
+        <FlexLayout Direction="Column"
+                AlignItems="Center"
+                JustifyContent="SpaceEvenly">
+            
+            <Image Source="LogoPokApp.png"></Image>
+            <Label Text="L'app pokédex qui te permet de créer tes propres pokémons ! Cliquez sur les pokemons pour avoir leurs détails."
+                FontSize="Medium" 
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"                  
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Image Source="salamecheShiny.png" WidthRequest="120" HeightRequest="120">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Accueil"/>
+                </Image.GestureRecognizers>
+            </Image>
+
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>

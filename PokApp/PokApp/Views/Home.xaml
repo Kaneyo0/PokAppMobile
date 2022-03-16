@@ -11,7 +11,7 @@
                 JustifyContent="SpaceEvenly">
             
             <Image Source="LogoPokApp.png"></Image>
-            <Label Text="L'app pokédex qui te permet de créer tes propres pokémons ! Cliquez sur les pokemons pour avoir leurs détails."
+            <Label Text="L'app pokédex qui te permet de créer tes pokémons !"
                 FontSize="Medium" 
                 HorizontalTextAlignment="Center"
                 VerticalTextAlignment="Center"                  

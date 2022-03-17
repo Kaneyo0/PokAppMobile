@@ -52,7 +52,7 @@
                    Margin="2,0,20,0"
                    Grid.Column="1">
                 <FlexLayout JustifyContent="Center" Direction="Column">
-                    <Label HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Abilités"></Label>
+                    <Label HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Talents"></Label>
                     <Label HorizontalOptions="Center" FontSize="Medium" Text="{Binding TalentPrincipal}"></Label>
                     <Label HorizontalOptions="Center" FontSize="Medium" Text="{Binding TalentSecondaire}"></Label>
                     <Label HorizontalOptions="Center" FontSize="Medium" Text="{Binding TalentSecrete}"></Label>

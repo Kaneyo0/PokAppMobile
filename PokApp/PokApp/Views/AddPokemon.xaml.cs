@@ -21,11 +21,12 @@ namespace PokApp.Views
         {
             if (sender == heightSlider)
             {
-                heightLabel.Text = string.Format("Taille = {0:F2} cm", (int)args.NewValue);
+                heightLabel.Text = string.Format("Taille = {0:F2} dm", (int)args.NewValue);
             }
+
             else if (sender == weightSlider)
             {
-                weightLabel.Text = string.Format("Poids = {0:F2} kg", (int)args.NewValue);
+                weightLabel.Text = string.Format("Poids = {0:F2} hg", (int)args.NewValue);
             }
 
             else if (sender == hpSlider)
@@ -59,7 +60,6 @@ namespace PokApp.Views
                     HP = Convert.ToInt32(hpSlider.Value),
                     Atk = Convert.ToInt32(atkSlider.Value),
                     Def = Convert.ToInt32(defSlider.Value),
-
                 });
 
                 await DisplayAlert("Félicitations !", "Votre Pokémon a correctement été ajouté.", "OK");

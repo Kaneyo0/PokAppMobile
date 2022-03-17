@@ -21,40 +21,41 @@ namespace PokApp.ViewModel
         {
             Pokemons = new ObservableCollection<Models.Pokemon>();
 
-            Device.BeginInvokeOnMainThread(async () =>
+            if (Application.Current.Properties.ContainsKey("FirstUse"))
             {
-
-                for (int i = 1; i <= 5; i++)
+                Device.BeginInvokeOnMainThread(async () =>
                 {
-                   
-                    var TypeSecondaire = "";
-                    var Abilities = new List<string>();
-                    var pokemonList = new List<Models.Pokemon>();
-                    var PokemonApi = await Task.Run(() => pokeClient.GetResourceAsync<Pokemon>(i));
-                    if (PokemonApi.Types.Count == 2)
+                    for (int i = 1; i <= 50; i++)
                     {
-                        TypeSecondaire = PokemonApi.Types[1].Type.Name;
+                        var TypeSecondaire = "";
+                        var Abilities = new List<string>();
+                        var pokemonList = new List<Models.Pokemon>();
+                        var PokemonApi = await Task.Run(() => pokeClient.GetResourceAsync<Pokemon>(i));
+                        if (PokemonApi.Types.Count == 2)
+                        {
+                            TypeSecondaire = PokemonApi.Types[1].Type.Name;
+                        }
+                        foreach (PokemonAbility Ability in PokemonApi.Abilities)
+                        {
+                            Abilities.Add(Ability.Ability.Name);
+                        }
+                        await App.Database.SavePokemonAsync(new Models.Pokemon
+                        {
+                            Name = PokemonApi.Name,
+                            Picture = PokemonApi.Sprites.FrontDefault,
+                            Height = PokemonApi.Height,
+                            Weight = PokemonApi.Weight,
+                            //Color = PokemonApi.Species,
+                            TypePrincipal = PokemonApi.Types[0].Type.Name,
+                            TypeSecondaire = TypeSecondaire,
+                            Abilities = Abilities,
+                            HP = PokemonApi.Stats[0].BaseStat,
+                            Atk = PokemonApi.Stats[1].BaseStat,
+                            Def = PokemonApi.Stats[2].BaseStat,
+                        });
                     }
-                    foreach (PokemonAbility Ability in PokemonApi.Abilities)
-                    {
-                        Abilities.Add(Ability.Ability.Name);
-                    }
-                    await App.Database.SavePokemonAsync(new Models.Pokemon
-                    {
-                        Name = PokemonApi.Name,
-                        Picture = PokemonApi.Sprites.FrontDefault,
-                        Height = PokemonApi.Height,
-                        Weight = PokemonApi.Weight,
-                        //Color = PokemonApi.Species,
-                        TypePrincipal = PokemonApi.Types[0].Type.Name,
-                        TypeSecondaire = TypeSecondaire,
-                        Abilities = Abilities,
-                        HP = PokemonApi.Stats[0].BaseStat,
-                        Atk = PokemonApi.Stats[1].BaseStat,
-                        Def = PokemonApi.Stats[2].BaseStat,
-                    });
-                }
-            });
+                });
+            }
         }
     }
 }

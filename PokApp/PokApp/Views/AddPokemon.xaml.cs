@@ -21,7 +21,7 @@ namespace PokApp.Views
         {
             if (sender == heightSlider)
             {
-                heightLabel.Text = string.Format("Taille = {0:F2} cm", (int)args.NewValue);
+                heightLabel.Text = string.Format("Taille = {0:F2} m", (float)args.NewValue);
             }
             else if (sender == weightSlider)
             {

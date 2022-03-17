@@ -34,6 +34,7 @@ namespace PokApp.ViewModel
                         //var Abilities = new List<string>();
                         var pokemonList = new List<Models.Pokemon>();
                         var PokemonApi = await Task.Run(() => pokeClient.GetResourceAsync<PokeApiNet.Pokemon>(i));
+                        PokemonSpecies species = Task.Run(() => pokeClient.GetResourceAsync(PokemonApi.Species)).Result;
                         if (PokemonApi.Types.Count == 2)
                         {
                             TypeSecondaire = PokemonApi.Types[1].Type.Name;
@@ -52,7 +53,7 @@ namespace PokApp.ViewModel
                         } */
                         await App.Database.SavePokemonAsync(new Models.Pokemon
                         {
-                            Name = PokemonApi.Name,
+                            Name = species.Names.Find(name => name.Language.Name.Equals("fr")).Name,
                             Picture = PokemonApi.Sprites.FrontDefault,
                             Height = PokemonApi.Height,
                             Weight = PokemonApi.Weight,

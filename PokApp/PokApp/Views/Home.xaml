@@ -11,12 +11,19 @@
                 JustifyContent="SpaceEvenly">
             
             <Image Source="LogoPokApp.png"></Image>
-            <Label Text="L'app pokédex qui te permet de créer tes pokémons !"
-                FontSize="Medium" 
-                HorizontalTextAlignment="Center"
-                VerticalTextAlignment="Center"                  
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Frame BorderColor="Gray"
+                   BackgroundColor="#514cb6"
+                   CornerRadius="5"
+                   Padding="8"
+                   Margin="20,5,20,5">
+                <Label Text="L'app pokédex qui te permet de créer tes pokémons !"
+                       FontSize="Medium" 
+                       TextColor="#f6d418"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"                  
+                       VerticalOptions="CenterAndExpand" 
+                       HorizontalOptions="CenterAndExpand" />  
+            </Frame>
             <Image Source="salamecheShiny.png" WidthRequest="120" HeightRequest="120">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Accueil"/>

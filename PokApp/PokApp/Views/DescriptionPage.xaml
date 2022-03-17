@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PokApp.Views.DescriptionPage">
     <StackLayout>
-        <Image HorizontalOptions="Center" WidthRequest="200" HeightRequest="200" Source="{Binding Picture}"></Image>
+        <Image HorizontalOptions="Center" WidthRequest="150" HeightRequest="150" Source="{Binding Picture}"></Image>
         <Label x:Name="PokemonName"  HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold" TextColor="Black" Text="{Binding Name}"></Label>
         <Frame BorderColor="Gray"
                    CornerRadius="5"
@@ -15,9 +15,9 @@
             </FlexLayout>
         </Frame>
         <Frame BorderColor="Gray"
-                       CornerRadius="5"
-                       Padding="8"
-                       Margin="20,5,20,5">
+               CornerRadius="5"
+               Padding="8"
+               Margin="20,5,20,5">
             <StackLayout Orientation="Horizontal" Spacing="50" HorizontalOptions="Center">
                 <FlexLayout JustifyContent="Center" Direction="Column">
                     <Label FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="HP"></Label>

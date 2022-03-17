@@ -23,6 +23,7 @@ namespace PokApp.Views
             {
                 heightLabel.Text = string.Format("Taille = {0:F2} m", (float)args.NewValue);
             }
+
             else if (sender == weightSlider)
             {
                 weightLabel.Text = string.Format("Poids = {0:F2} kg", (int)args.NewValue);
@@ -59,7 +60,6 @@ namespace PokApp.Views
                     HP = Convert.ToInt32(hpSlider.Value),
                     Atk = Convert.ToInt32(atkSlider.Value),
                     Def = Convert.ToInt32(defSlider.Value),
-
                 });
 
                 await DisplayAlert("Félicitations !", "Votre Pokémon a correctement été ajouté.", "OK");

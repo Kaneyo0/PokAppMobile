@@ -1,4 +1,5 @@
-﻿using PokeApiNet;
+﻿using PokApp.Models;
+using PokeApiNet;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace PokApp.ViewModel
         {
             Pokemons = new ObservableCollection<Models.Pokemon>();
 
-            if (Application.Current.Properties.ContainsKey("FirstUse"))
+            if (App.Database.GetPokemonAsync().Result.Count == 0)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -30,7 +31,7 @@ namespace PokApp.ViewModel
                         var TypeSecondaire = "";
                         var Abilities = new List<string>();
                         var pokemonList = new List<Models.Pokemon>();
-                        var PokemonApi = await Task.Run(() => pokeClient.GetResourceAsync<Pokemon>(i));
+                        var PokemonApi = await Task.Run(() => pokeClient.GetResourceAsync<PokeApiNet.Pokemon>(i));
                         if (PokemonApi.Types.Count == 2)
                         {
                             TypeSecondaire = PokemonApi.Types[1].Type.Name;

@@ -8,7 +8,7 @@ namespace PokApp
 {
     public partial class App : Application
     {
-        static Database database;
+        public static Database database;
 
         public static Database Database
         {

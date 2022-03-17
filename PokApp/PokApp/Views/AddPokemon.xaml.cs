@@ -90,6 +90,8 @@ namespace PokApp.Views
 
             mediaFile = await CrossMedia.Current.PickPhotoAsync();
             PokemonImage.Source = mediaFile.Path;
+            PokemonImage.WidthRequest = 150;
+            PokemonImage.HeightRequest = 150;
             AddImageButton.Text = "Changer l'image";
 
             if (mediaFile == null)

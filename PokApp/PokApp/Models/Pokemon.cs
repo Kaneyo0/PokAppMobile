@@ -18,7 +18,9 @@ namespace PokApp.Models
         public int Def { get; set; }
         public string TypePrincipal { get; set; }
         public string TypeSecondaire { get; set; }
-        public string TypesBlobbed { get; set; }
+        public string TalentPrincipal { get; set; }
+        public string TalentSecondaire { get; set; }
+        public string TalentSecrete { get; set; }
         public string AbilitiesBlobbed { get; set; }
         [Ignore]
         public List<string> Abilities

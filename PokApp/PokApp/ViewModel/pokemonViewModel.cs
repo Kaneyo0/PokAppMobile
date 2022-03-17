@@ -29,17 +29,27 @@ namespace PokApp.ViewModel
                     for (int i = 1; i <= 50; i++)
                     {
                         var TypeSecondaire = "";
-                        var Abilities = new List<string>();
+                        var TalentSecondaire = "";
+                        var TalentSecrete = "";
+                        //var Abilities = new List<string>();
                         var pokemonList = new List<Models.Pokemon>();
                         var PokemonApi = await Task.Run(() => pokeClient.GetResourceAsync<PokeApiNet.Pokemon>(i));
                         if (PokemonApi.Types.Count == 2)
                         {
                             TypeSecondaire = PokemonApi.Types[1].Type.Name;
                         }
-                        foreach (PokemonAbility Ability in PokemonApi.Abilities)
+                        if (PokemonApi.Abilities.Count > 1)
+                        {
+                            TalentSecondaire = PokemonApi.Abilities[1].Ability.Name;
+                        }
+                        if (PokemonApi.Abilities.Count > 2)
+                        {
+                            TalentSecrete = PokemonApi.Abilities[2].Ability.Name;
+                        }
+                        /*foreach (PokemonAbility Ability in PokemonApi.Abilities)
                         {
                             Abilities.Add(Ability.Ability.Name);
-                        } 
+                        } */
                         await App.Database.SavePokemonAsync(new Models.Pokemon
                         {
                             Name = PokemonApi.Name,
@@ -48,7 +58,10 @@ namespace PokApp.ViewModel
                             Weight = PokemonApi.Weight,
                             TypePrincipal = PokemonApi.Types[0].Type.Name,
                             TypeSecondaire = TypeSecondaire,
-                            Abilities = Abilities,
+                            //Abilities = Abilities,
+                            TalentPrincipal = PokemonApi.Abilities[0].Ability.Name,
+                            TalentSecondaire = TalentSecondaire,
+                            TalentSecrete = TalentSecrete,
                             HP = PokemonApi.Stats[0].BaseStat,
                             Atk = PokemonApi.Stats[1].BaseStat,
                             Def = PokemonApi.Stats[2].BaseStat,

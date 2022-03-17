@@ -8,8 +8,8 @@
         <Frame BorderColor="Gray"
                    CornerRadius="5"
                    Padding="8"
-                   Margin="5, 20">
-            <FlexLayout Margin="5, 0" JustifyContent="SpaceAround">
+                   Margin="20,5,20,5">
+            <FlexLayout Margin="5,0,5,0" JustifyContent="SpaceAround">
                 <Label HorizontalOptions="Center" FontSize="Medium" Text="{Binding TypePrincipal}"></Label>
                 <Label HorizontalOptions="Center" FontSize="Medium" Text="{Binding TypeSecondaire}"></Label>
             </FlexLayout>
@@ -17,7 +17,7 @@
         <Frame BorderColor="Gray"
                        CornerRadius="5"
                        Padding="8"
-                       Margin="5, 20">
+                       Margin="20,5,20,5">
             <StackLayout Orientation="Horizontal" Spacing="50" HorizontalOptions="Center">
                 <FlexLayout JustifyContent="Center" Direction="Column">
                     <Label FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="HP"></Label>
@@ -33,18 +33,31 @@
                 </FlexLayout>
             </StackLayout>
         </Frame>
-        <Frame BorderColor="Gray"
+
+        <Grid>
+            <Frame BorderColor="Gray"
                    CornerRadius="5"
                    Padding="8"
-                   Margin="0, 20">
-            <Grid Margin="0, 10">
-                <Label Grid.Row="0" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Taille"></Label>
-                <Label Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding Height}"></Label>
-                <Label Grid.Row="1" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Poids"></Label>
-                <Label Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding Weight}"></Label>
-                <Label Grid.Row="2" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Abilités"></Label>
-                <Label Grid.Row="2" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding AbilitiesBlobbed}"></Label>
-            </Grid>
-        </Frame>
+                   Margin="20,0,2,0">
+                <FlexLayout JustifyContent="Center" Direction="Column">
+                    <Label HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Taille"></Label>
+                    <Label FontSize="Medium" Text="{Binding Height}"></Label>
+                    <Label FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Poids"></Label>
+                    <Label FontSize="Medium" Text="{Binding Weight}"></Label>
+                </FlexLayout>
+            </Frame>
+            <Frame BorderColor="Gray"
+                   CornerRadius="5"
+                   Padding="8"
+                   Margin="2,0,20,0"
+                   Grid.Column="1">
+                <FlexLayout JustifyContent="Center" Direction="Column">
+                    <Label HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Abilités"></Label>
+                    <Label HorizontalOptions="Center" FontSize="Medium" Text="{Binding TalentPrincipal}"></Label>
+                    <Label HorizontalOptions="Center" FontSize="Medium" Text="{Binding TalentSecondaire}"></Label>
+                    <Label HorizontalOptions="Center" FontSize="Medium" Text="{Binding TalentSecrete}"></Label>
+                </FlexLayout>
+            </Frame>
+        </Grid>
     </StackLayout>
 </ContentPage>

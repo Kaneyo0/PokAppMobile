@@ -2,26 +2,49 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PokApp.Views.DescriptionPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Image HorizontalOptions="Center" WidthRequest="200" HeightRequest="200" Source="{Binding Picture}"></Image>
-            <Label HorizontalOptions="Center" Margin="10" FontSize="Large" FontAttributes="Bold" TextColor="Black" Text="{Binding Name}"></Label>
-            <Grid Margin="20,10,20,20">
-                <Label Grid.Row="0" HorizontalOptions="Center" FontSize="Medium" Text="{Binding TypePrincipal}"></Label>
-                <Label Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" FontSize="Medium" Text="{Binding TypeSecondaire}"></Label>
-                <Label Grid.Row="1" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Taille"></Label>
-                <Label Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding Height}"></Label>
-                <Label Grid.Row="2" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Poids"></Label>
-                <Label Grid.Row="2" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding Weight}"></Label>
-                <Label Grid.Row="3" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Abilités"></Label>
-                <Label Grid.Row="3" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding AbilitiesBlobbed}"></Label>
-                <Label Grid.Row="4" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="HP"></Label>
-                <Label Grid.Row="4" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding HP}"></Label>
-                <Label Grid.Row="5" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Atk"></Label>
-                <Label Grid.Row="5" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding Atk}"></Label>
-                <Label Grid.Row="6" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Def"></Label>
-                <Label Grid.Row="6" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding Def}"></Label>
+    <StackLayout>
+        <Image HorizontalOptions="Center" WidthRequest="200" HeightRequest="200" Source="{Binding Picture}"></Image>
+        <Label x:Name="PokemonName"  HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold" TextColor="Black" Text="{Binding Name}"></Label>
+        <Frame BorderColor="Gray"
+                   CornerRadius="5"
+                   Padding="8"
+                   Margin="5 20">
+            <FlexLayout Margin="5 0" JustifyContent="SpaceAround">
+                <Label HorizontalOptions="Center" FontSize="Medium" Text="{Binding TypePrincipal}"></Label>
+                <Label HorizontalOptions="Center" FontSize="Medium" Text="{Binding TypeSecondaire}"></Label>
+            </FlexLayout>
+        </Frame>
+        <Frame BorderColor="Gray"
+                       CornerRadius="5"
+                       Padding="8"
+                       Margin="5 20">
+            <StackLayout Orientation="Horizontal" Spacing="50" HorizontalOptions="Center">
+                <FlexLayout JustifyContent="Center" Direction="Column">
+                    <Label FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="HP"></Label>
+                    <Label FontSize="Medium" Text="{Binding HP}"></Label>
+                </FlexLayout>
+                <FlexLayout JustifyContent="Center" Direction="Column">
+                    <Label FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Atk"></Label>
+                    <Label FontSize="Medium" Text="{Binding Atk}"></Label>
+                </FlexLayout>
+                <FlexLayout JustifyContent="Center" Direction="Column">
+                    <Label FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Def"></Label>
+                    <Label FontSize="Medium" Text="{Binding Def}"></Label>
+                </FlexLayout>
+            </StackLayout>
+        </Frame>
+        <Frame BorderColor="Gray"
+                   CornerRadius="5"
+                   Padding="8"
+                   Margin="0 20">
+            <Grid Margin="0 10">
+                <Label Grid.Row="0" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Taille"></Label>
+                <Label Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding Height}"></Label>
+                <Label Grid.Row="1" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Poids"></Label>
+                <Label Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding Weight}"></Label>
+                <Label Grid.Row="2" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Abilités"></Label>
+                <Label Grid.Row="2" Grid.Column="1" HorizontalOptions="Start" FontSize="Medium" Text="{Binding AbilitiesBlobbed}"></Label>
             </Grid>
-        </StackLayout>
-    </ContentPage.Content>
+        </Frame>
+    </StackLayout>
 </ContentPage>

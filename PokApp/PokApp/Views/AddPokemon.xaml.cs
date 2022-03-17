@@ -66,6 +66,8 @@ namespace PokApp.Views
 
                 PokemonNameEntry.Text = string.Empty;
                 PokemonImage.Source = "";
+                PokemonImage.WidthRequest = 0;
+                PokemonImage.HeightRequest = 0;
                 heightSlider.Value = 0.0;
                 weightSlider.Value = 0.0;
                 hpSlider.Value = 0.0;

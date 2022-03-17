@@ -12,6 +12,10 @@ namespace PokApp.Views
             InitializeComponent();
             BindingContext = Pokemon;
         }
-   
+
+        async void DeletePokemon(object sender)
+        {
+            await App.database.DeletePokemonAsync(PokemonName.ToString());
+        }
     }
 }

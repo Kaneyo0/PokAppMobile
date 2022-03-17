@@ -11,7 +11,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <FlexLayout JustifyContent="SpaceAround" AlignItems="Center">
+                        <FlexLayout JustifyContent="SpaceAround" BackgroundColor="{Binding Color}" AlignItems="Center">
                             <Image WidthRequest="100" HeightRequest="100" Source="{Binding Picture}"></Image>
                             <Label FontSize="Medium" TextColor="Black" FontAttributes="Bold" Text="{Binding Name}"/>
                         </FlexLayout>

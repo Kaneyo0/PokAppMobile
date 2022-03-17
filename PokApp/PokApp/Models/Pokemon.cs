@@ -20,18 +20,6 @@ namespace PokApp.Models
         public string TypeSecondaire { get; set; }
         public string TypesBlobbed { get; set; }
         public string AbilitiesBlobbed { get; set; }
-        /*[Ignore]
-        public List<string> Types
-        {
-            get
-            {
-                return JsonConvert.DeserializeObject<List<string>>(TypesBlobbed);
-            }
-            set
-            {
-                TypesBlobbed = JsonConvert.SerializeObject(value);
-            }
-        }*/
         [Ignore]
         public List<string> Abilities
         {

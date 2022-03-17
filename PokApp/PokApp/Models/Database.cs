@@ -24,6 +24,9 @@ namespace PokApp.Models
             return _database.InsertAsync(pokemon);
         }
 
- 
+        public Task<int> DeletePokemonAsync(string PokemonName)
+        {
+            return _database.DeleteAsync(PokemonName);
+        }
     }
 }

@@ -39,14 +39,13 @@ namespace PokApp.ViewModel
                         foreach (PokemonAbility Ability in PokemonApi.Abilities)
                         {
                             Abilities.Add(Ability.Ability.Name);
-                        }
+                        } 
                         await App.Database.SavePokemonAsync(new Models.Pokemon
                         {
                             Name = PokemonApi.Name,
                             Picture = PokemonApi.Sprites.FrontDefault,
                             Height = PokemonApi.Height,
                             Weight = PokemonApi.Weight,
-                            Color = PokemonApi.Species.Name,
                             TypePrincipal = PokemonApi.Types[0].Type.Name,
                             TypeSecondaire = TypeSecondaire,
                             Abilities = Abilities,

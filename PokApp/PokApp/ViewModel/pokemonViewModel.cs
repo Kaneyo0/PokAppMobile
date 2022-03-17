@@ -27,19 +27,15 @@ namespace PokApp.ViewModel
                 for (int i = 1; i <= 5; i++)
                 {
                    
-                    var Types = "";
+                    var TypeSecondaire = "";
                     var Abilities = new List<string>();
                     var pokemonList = new List<Models.Pokemon>();
                     var PokemonApi = await Task.Run(() => pokeClient.GetResourceAsync<Pokemon>(i));
-                    foreach (PokemonType Type in PokemonApi.Types)
+                    if (PokemonApi.Types.Count == 2)
                     {
-                        Types += Type.Type.Name;
+                        TypeSecondaire = PokemonApi.Types[1].Type.Name;
                     }
-                        /*foreach (PokemonType Type in PokemonApi.Types)
-                        {
-                            Types.Add(Type.Type.Name);
-                        }*/
-                        foreach (PokemonAbility Ability in PokemonApi.Abilities)
+                    foreach (PokemonAbility Ability in PokemonApi.Abilities)
                     {
                         Abilities.Add(Ability.Ability.Name);
                     }
@@ -49,7 +45,9 @@ namespace PokApp.ViewModel
                         Picture = PokemonApi.Sprites.FrontDefault,
                         Height = PokemonApi.Height,
                         Weight = PokemonApi.Weight,
-                        Types = PokemonApi.Types[0].Type.Name,
+                        //Color = PokemonApi.Species,
+                        TypePrincipal = PokemonApi.Types[0].Type.Name,
+                        TypeSecondaire = TypeSecondaire,
                         Abilities = Abilities,
                         HP = PokemonApi.Stats[0].BaseStat,
                         Atk = PokemonApi.Stats[1].BaseStat,

@@ -12,10 +12,12 @@ namespace PokApp.Models
         public string Picture { get; set; }
         public int Height { get; set; }
         public int Weight { get; set; }
+        public string Color { get; set; }
         public int HP { get; set; }
         public int Atk { get; set; }
         public int Def { get; set; }
-        public string Types { get; set; }
+        public string TypePrincipal { get; set; }
+        public string TypeSecondaire { get; set; }
         public string TypesBlobbed { get; set; }
         public string AbilitiesBlobbed { get; set; }
         /*[Ignore]

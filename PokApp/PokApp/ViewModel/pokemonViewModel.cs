@@ -46,7 +46,7 @@ namespace PokApp.ViewModel
                             Picture = PokemonApi.Sprites.FrontDefault,
                             Height = PokemonApi.Height,
                             Weight = PokemonApi.Weight,
-                            //Color = PokemonApi.Species,
+                            Color = PokemonApi.Species.Name,
                             TypePrincipal = PokemonApi.Types[0].Type.Name,
                             TypeSecondaire = TypeSecondaire,
                             Abilities = Abilities,

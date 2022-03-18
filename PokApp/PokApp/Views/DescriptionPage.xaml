@@ -3,59 +3,61 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PokApp.Views.DescriptionPage">
     <StackLayout BackgroundColor="{Binding Color}">
-        <Image HorizontalOptions="Center" WidthRequest="150" HeightRequest="150" Source="{Binding Picture}"></Image>
+        <Frame BorderColor="Gray" WidthRequest="10" HeightRequest="150" BackgroundColor="#99FFFFFF">
+            <Image HorizontalOptions="Center" WidthRequest="150" HeightRequest="150" Source="{Binding Picture}"></Image>
+        </Frame>
         <Label x:Name="PokemonName"  HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold" TextColor="Black" Text="{Binding Name}"></Label>
-        <Frame BorderColor="Gray"
-                   CornerRadius="5"
+        <Frame BorderColor="Gray" BackgroundColor="#efeeee"
+                   CornerRadius="20"
                    Padding="8"
                    Margin="20,5,20,5">
             <FlexLayout Margin="5,0,5,0" JustifyContent="SpaceAround">
-                <Label HorizontalOptions="Center" FontSize="Medium" Text="{Binding TypePrincipal}"></Label>
-                <Label HorizontalOptions="Center" FontSize="Medium" Text="{Binding TypeSecondaire}"></Label>
+                <Label HorizontalOptions="Center" FontSize="Medium" TextColor="Black" Text="{Binding TypePrincipal}"></Label>
+                <Label HorizontalOptions="Center" FontSize="Medium" TextColor="Black" Text="{Binding TypeSecondaire}"></Label>
             </FlexLayout>
         </Frame>
-        <Frame BorderColor="Gray"
+        <Frame BorderColor="Gray" BackgroundColor="#efeeee"
                CornerRadius="5"
                Padding="8"
                Margin="20,5,20,5">
             <StackLayout Orientation="Horizontal" Spacing="50" HorizontalOptions="Center">
                 <FlexLayout JustifyContent="Center" Direction="Column">
-                    <Label FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="HP"></Label>
-                    <Label FontSize="Medium" Text="{Binding HP}"></Label>
+                    <Label FontSize="Medium" FontAttributes="Bold" TextColor="{Binding Color}" Text="HP"></Label>
+                    <Label FontSize="Medium" TextColor="Black" Text="{Binding HP}"></Label>
                 </FlexLayout>
                 <FlexLayout JustifyContent="Center" Direction="Column">
-                    <Label FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Atk"></Label>
-                    <Label FontSize="Medium" Text="{Binding Atk}"></Label>
+                    <Label FontSize="Medium" FontAttributes="Bold" TextColor="{Binding Color}" Text="Atk"></Label>
+                    <Label FontSize="Medium" TextColor="Black" Text="{Binding Atk}"></Label>
                 </FlexLayout>
                 <FlexLayout JustifyContent="Center" Direction="Column">
-                    <Label FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Def"></Label>
-                    <Label FontSize="Medium" Text="{Binding Def}"></Label>
+                    <Label FontSize="Medium" FontAttributes="Bold" TextColor="{Binding Color}" Text="Def"></Label>
+                    <Label FontSize="Medium" TextColor="Black" Text="{Binding Def}"></Label>
                 </FlexLayout>
             </StackLayout>
         </Frame>
 
         <Grid>
-            <Frame BorderColor="Gray"
+            <Frame BorderColor="Gray" BackgroundColor="#efeeee"
                    CornerRadius="5"
                    Padding="8"
                    Margin="20,0,2,0">
                 <FlexLayout JustifyContent="Center" Direction="Column">
-                    <Label HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Taille"></Label>
-                    <Label FontSize="Medium" Text="{Binding Height}"></Label>
-                    <Label FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Poids"></Label>
-                    <Label FontSize="Medium" Text="{Binding Weight}"></Label>
+                    <Label HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="{Binding Color}" Text="Taille"></Label>
+                    <Label FontSize="Medium" TextColor="Black" Text="{Binding Height}"></Label>
+                    <Label FontSize="Medium" FontAttributes="Bold" TextColor="{Binding Color}" Text="Poids"></Label>
+                    <Label FontSize="Medium" TextColor="Black" Text="{Binding Weight}"></Label>
                 </FlexLayout>
             </Frame>
-            <Frame BorderColor="Gray"
+            <Frame BorderColor="Gray" BackgroundColor="#efeeee"
                    CornerRadius="5"
                    Padding="8"
                    Margin="2,0,20,0"
                    Grid.Column="1">
                 <FlexLayout JustifyContent="Center" Direction="Column">
-                    <Label HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="#514cb6" Text="Talents"></Label>
-                    <Label HorizontalOptions="Center" FontSize="Medium" Text="{Binding TalentPrincipal}"></Label>
-                    <Label HorizontalOptions="Center" FontSize="Medium" Text="{Binding TalentSecondaire}"></Label>
-                    <Label HorizontalOptions="Center" FontSize="Medium" Text="{Binding TalentSecrete}"></Label>
+                    <Label HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="{Binding Color}" Text="Talents"></Label>
+                    <Label HorizontalOptions="Center" FontSize="Medium" TextColor="Black" Text="{Binding TalentPrincipal}"></Label>
+                    <Label HorizontalOptions="Center" FontSize="Medium" TextColor="Black" Text="{Binding TalentSecondaire}"></Label>
+                    <Label HorizontalOptions="Center" FontSize="Medium" TextColor="Black" Text="{Binding TalentSecrete}"></Label>
                 </FlexLayout>
             </Frame>
         </Grid>

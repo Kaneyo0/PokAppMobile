@@ -31,10 +31,9 @@ namespace PokApp.ViewModel
                         var TypeSecondaire = "";
                         var TalentSecondaire = "";
                         var TalentSecrete = "";
-                        //var Abilities = new List<string>();
                         var pokemonList = new List<Models.Pokemon>();
                         var PokemonApi = await Task.Run(() => pokeClient.GetResourceAsync<PokeApiNet.Pokemon>(i));
-                        PokemonSpecies species = Task.Run(() => pokeClient.GetResourceAsync(PokemonApi.Species)).Result;
+                        PokemonSpecies Species = Task.Run(() => pokeClient.GetResourceAsync(PokemonApi.Species)).Result;
                         if (PokemonApi.Types.Count == 2)
                         {
                             TypeSecondaire = PokemonApi.Types[1].Type.Name;
@@ -47,19 +46,15 @@ namespace PokApp.ViewModel
                         {
                             TalentSecrete = PokemonApi.Abilities[2].Ability.Name;
                         }
-                        /*foreach (PokemonAbility Ability in PokemonApi.Abilities)
-                        {
-                            Abilities.Add(Ability.Ability.Name);
-                        } */
                         await App.Database.SavePokemonAsync(new Models.Pokemon
                         {
-                            Name = species.Names.Find(name => name.Language.Name.Equals("fr")).Name,
+                            Name = Species.Names.Find(name => name.Language.Name.Equals("fr")).Name,
                             Picture = PokemonApi.Sprites.FrontDefault,
+                            Color = Species.Color.Name,
                             Height = PokemonApi.Height,
                             Weight = PokemonApi.Weight,
                             TypePrincipal = PokemonApi.Types[0].Type.Name,
                             TypeSecondaire = TypeSecondaire,
-                            //Abilities = Abilities,
                             TalentPrincipal = PokemonApi.Abilities[0].Ability.Name,
                             TalentSecondaire = TalentSecondaire,
                             TalentSecrete = TalentSecrete,

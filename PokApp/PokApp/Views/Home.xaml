@@ -18,6 +18,7 @@
                    Margin="20,5,20,5">
                 <Label Text="L'application Pokédex qui te permet de créer tes Pokémon !"
                        FontSize="Medium" 
+                       FontAttributes="Bold"
                        TextColor="#f6d418"
                        WidthRequest="320"
                        HorizontalTextAlignment="Center"

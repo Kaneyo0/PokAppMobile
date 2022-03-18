@@ -21,18 +21,5 @@ namespace PokApp.Models
         public string TalentPrincipal { get; set; }
         public string TalentSecondaire { get; set; }
         public string TalentSecrete { get; set; }
-        public string AbilitiesBlobbed { get; set; }
-        [Ignore]
-        public List<string> Abilities
-        {
-            get
-            {
-                return JsonConvert.DeserializeObject<List<string>>(AbilitiesBlobbed);
-            }
-            set
-            {
-                AbilitiesBlobbed = JsonConvert.SerializeObject(value);
-            }
-        }
     }
 }

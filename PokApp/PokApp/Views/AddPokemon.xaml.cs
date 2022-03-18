@@ -51,6 +51,7 @@ namespace PokApp.Views
             if (!string.IsNullOrWhiteSpace(PokemonNameEntry.Text))
             {
                 string[] imageSource = PokemonImage.Source.ToString().Split(' ');
+                //Ajoute le nouveau Pokemon
                 await App.Database.SavePokemonAsync(new Pokemon
                 {
                     Name = PokemonNameEntry.Text,
@@ -63,7 +64,7 @@ namespace PokApp.Views
                 });
 
                 await DisplayAlert("Félicitations !", "Votre Pokémon a correctement été ajouté.", "OK");
-
+                //Réinitialise les valeurs de la page
                 PokemonNameEntry.Text = string.Empty;
                 PokemonImage.Source = "";
                 PokemonImage.WidthRequest = 0;
@@ -90,6 +91,7 @@ namespace PokApp.Views
                 return;
             }
 
+            //Affiche l'image
             mediaFile = await CrossMedia.Current.PickPhotoAsync();
             PokemonImage.Source = mediaFile.Path;
             PokemonImage.WidthRequest = 150;

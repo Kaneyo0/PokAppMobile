@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PokApp.Views.DescriptionPage">
-    <StackLayout>
+    <StackLayout BackgroundColor="{Binding Color}">
         <Image HorizontalOptions="Center" WidthRequest="150" HeightRequest="150" Source="{Binding Picture}"></Image>
         <Label x:Name="PokemonName"  HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold" TextColor="Black" Text="{Binding Name}"></Label>
         <Frame BorderColor="Gray"

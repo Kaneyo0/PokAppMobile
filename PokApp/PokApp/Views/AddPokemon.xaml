@@ -25,10 +25,10 @@
         <Button x:Name="AddImageButton" Text="Ajouter une image" Clicked="AddAttachments" />
 
         <StackLayout Margin="10">
-            <Slider x:Name="heightSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="Red" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="20" Minimum="0" />
+            <Slider x:Name="heightSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="Red" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="2000" Minimum="10" />
             <Label x:Name="heightLabel" />
 
-            <Slider x:Name="weightSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="Red" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="1000" Minimum="0" />
+            <Slider x:Name="weightSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="Red" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="1000" Minimum="10" />
             <Label x:Name="weightLabel" />
 
             <Slider x:Name="hpSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="Red" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="1000" Minimum="10" />

@@ -21,12 +21,12 @@ namespace PokApp.Views
         {
             if (sender == heightSlider)
             {
-                heightLabel.Text = string.Format("Taille = {0:F2} m", (float)args.NewValue);
+                heightLabel.Text = string.Format("Taille = {0:F2} dm", (float)args.NewValue);
             }
 
             else if (sender == weightSlider)
             {
-                weightLabel.Text = string.Format("Poids = {0:F2} kg", (int)args.NewValue);
+                weightLabel.Text = string.Format("Poids = {0:F2} hg", (int)args.NewValue);
             }
 
             else if (sender == hpSlider)

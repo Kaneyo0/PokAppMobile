@@ -14,9 +14,11 @@ namespace PokApp.Views
             BindingContext = Pokemon;
         }
         //Supprime le Pokemon actuel grâce à son Id
-        async void DeletePokemon(object sender, System.EventArgs e)
+        async void DeletePokemon(object sender, EventArgs e)
         {
-            await App.database.DeletePokemonAsync(Int32.Parse(PokemonId.Text));
+            var IdPokemon = App.database.GetOnePokemonAsync(int.Parse(PokemonId.Text));
+            await App.database.DeletePokemonAsync(IdPokemon);
+            await Application.Current.MainPage.Navigation.PushAsync(new Pokedex(), true);
         }
     }
 }

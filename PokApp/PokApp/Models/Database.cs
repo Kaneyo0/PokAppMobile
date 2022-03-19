@@ -18,16 +18,23 @@ namespace PokApp.Models
         {
             return _database.Table<Pokemon>().ToListAsync();
         }
+
+        //Récupère un Pokemon en fonction de son Id
+        public Pokemon GetOnePokemonAsync(int Id)
+        {
+            return _database.FindAsync<Pokemon>(Id).Result;
+        }
+
         //Ajoute le Pokemon en paramètre, dans la base de données
         public Task<int> SavePokemonAsync(Pokemon pokemon)
         {
             return _database.InsertAsync(pokemon);
         }
+
         //Supprime un Pokemon de la base de données en fonction de l'Id en paramètre 
-        //(NON FONCTIONNEL ! "It has no PK")
-        public Task<int> DeletePokemonAsync(int Id)
+        public Task<int> DeletePokemonAsync(Pokemon pokemon)
         {
-            return _database.DeleteAsync(Id);
+            return _database.DeleteAsync(pokemon);
         }
     }
 }

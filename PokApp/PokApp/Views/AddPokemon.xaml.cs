@@ -16,7 +16,7 @@ namespace PokApp.Views
             InitializeComponent();
         }
 
-        //Actualise le texte des sliders
+        //Actualise le texte des sliders en temps réel
         void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
         {
             if (sender == heightSlider)
@@ -46,7 +46,7 @@ namespace PokApp.Views
         }
 
         //Ajoute un Pokemon dans la base de donnée
-        async void OnButtonClicked(object sender, EventArgs e)
+        async void SavePokemon(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(PokemonNameEntry.Text))
             {
@@ -104,5 +104,6 @@ namespace PokApp.Views
             }
 
         }
+
     }
 }

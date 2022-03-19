@@ -17,7 +17,7 @@ namespace PokApp.Views
         {
             InitializeComponent();
         }
-
+        //Easter Egg
         void Accueil(object sender, System.EventArgs e)
         {
 
@@ -25,11 +25,11 @@ namespace PokApp.Views
             var image = (Image)sender;
             if (compteur % 2 == 0)
             {
-                image.Source = "salamecheShiny.png";
+                image.Source = "salameche.png";
             }
             else
             {
-                image.Source = "salameche.jpg";
+                image.Source = "salamecheShiny.jpg";
             }
 
         }

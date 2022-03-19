@@ -61,5 +61,7 @@
                 </FlexLayout>
             </Frame>
         </Grid>
+        <Button Text="Supprimer Pokemon" Clicked="DeletePokemon" />
+        <Label x:Name="PokemonId" TextColor="{Binding Color}" Text="{Binding Id}"></Label>
     </StackLayout>
 </ContentPage>

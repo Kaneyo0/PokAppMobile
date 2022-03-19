@@ -21,7 +21,7 @@
                 PlaceholderColor="DarkGray" />
 
         <Image x:Name="PokemonImage" HorizontalOptions="Center"  Source=""></Image>
-        
+
         <Button x:Name="AddImageButton" Text="Ajouter une image" Clicked="AddAttachments" />
 
         <StackLayout Margin="10">
@@ -40,9 +40,7 @@
             <Slider x:Name="defSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="Red" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="1000" Minimum="10" />
             <Label x:Name="defLabel" />
 
-            <Button Text="Ajouter Pokemon" Clicked="OnButtonClicked" />
+            <Button Text="Ajouter Pokemon" Clicked="SavePokemon" />
         </StackLayout>
     </StackLayout>
-
-
 </ContentPage>

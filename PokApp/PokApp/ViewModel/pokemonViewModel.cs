@@ -11,6 +11,7 @@ namespace PokApp.ViewModel
     {
         private static PokemonViewModel _instance = new PokemonViewModel();
         public static PokemonViewModel instance { get { return _instance; } }
+        //Permet d'utiliser la PokéApi
         PokeApiClient pokeClient = new PokeApiClient();
         public ObservableCollection<Models.Pokemon> Pokemons
         {
@@ -26,6 +27,7 @@ namespace PokApp.ViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
+                    //Récupère et sauvegarde 50 Pokémons dans la base de données
                     for (int i = 1; i <= 50; i++)
                     {
                         var TypeSecondaire = "";
@@ -46,6 +48,7 @@ namespace PokApp.ViewModel
                         {
                             TalentSecrete = PokemonApi.Abilities[2].Ability.Name;
                         }
+                        //Sauvegarde du Pokemon
                         await App.Database.SavePokemonAsync(new Models.Pokemon
                         {
                             Name = Species.Names.Find(name => name.Language.Name.Equals("fr")).Name,

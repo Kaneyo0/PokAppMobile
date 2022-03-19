@@ -1,4 +1,5 @@
 ﻿using PokApp.Models;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,10 +13,10 @@ namespace PokApp.Views
             InitializeComponent();
             BindingContext = Pokemon;
         }
-
-        async void DeletePokemon(object sender)
+        //Supprime le Pokemon actuel grâce à son Id
+        async void DeletePokemon(object sender, System.EventArgs e)
         {
-            await App.database.DeletePokemonAsync(PokemonName.ToString());
+            await App.database.DeletePokemonAsync(Int32.Parse(PokemonId.Text));
         }
     }
 }

@@ -14,8 +14,10 @@ namespace PokApp
         {
             get
             {
+                //Si la base de données n'existe pas
                 if (database == null)
                 {
+                    //Création de la base de données
                     database = new Database(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "pokemon.db3"));
                 }
                 return database;
@@ -24,7 +26,6 @@ namespace PokApp
         public App()
         {
             InitializeComponent();
-
             MainPage = new ShellPage();
         }
 
@@ -39,6 +40,5 @@ namespace PokApp
         protected override void OnResume()
         {
         }
-
     }
 }

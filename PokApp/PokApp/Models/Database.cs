@@ -16,6 +16,8 @@ namespace PokApp.Models
             _database.CreateTableAsync<CollectionColor>().Wait();
         }
 
+
+        /**********POKEMON**********/
         //Récupère les Pokémons de la Base de données
         public Task<List<Pokemon>> GetPokemonAsync()
         {
@@ -38,6 +40,7 @@ namespace PokApp.Models
         }
 
 
+        /**********TYPES**********/
         //Récupère les Types de la Base de données
         public Task<List<CollectionTypes>> GetTypesCollectionAsync()
         {
@@ -55,6 +58,7 @@ namespace PokApp.Models
         }
 
 
+        /**********COULEURS**********/
         //Récupère les couleur de la Base de données
         public Task<List<CollectionColor>> GetColorCollectionAsync()
         {

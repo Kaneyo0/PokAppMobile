@@ -9,22 +9,22 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout Margin="20" VerticalOptions="FillAndExpand">
+    <StackLayout x:Name="PageBackground" Margin="20" VerticalOptions="FillAndExpand">
         <Entry  x:Name="PokemonNameEntry"
                 MaxLength="60"
                 Placeholder="Entrer le nom du Pokémon"
                 PlaceholderColor="DarkGray" />
 
         <Image x:Name="PokemonImage" HorizontalOptions="Center" Source=""></Image>
-
-        <Button x:Name="AddImageButton" Text="Ajouter une image" Clicked="AddAttachments" />
-        <Button x:Name="Color" CornerRadius="10" BorderColor="Gray" BackgroundColor="#efeeee" Clicked="SelectColor" Text="Choisir couleur"/>
-        <FlexLayout JustifyContent="SpaceAround">
-            <Button x:Name="TypePrincipal" CornerRadius="10" BorderColor="Gray" BackgroundColor="#efeeee" Clicked="SelectType" Text="Type Principal"/>
-            <Button x:Name="TypeSecondaire" CornerRadius="10" BorderColor="Gray" BackgroundColor="#efeeee" Clicked="SelectType" Text="Type Secondaire"/>
-        </FlexLayout>
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout >
+                <Button x:Name="AddImageButton" Text="Ajouter une image" Clicked="AddAttachments" />
+                <Button x:Name="Color" CornerRadius="10" BorderColor="Gray" BackgroundColor="#efeeee" Clicked="SelectColor" Text="Choisir couleur"/>
+                <FlexLayout JustifyContent="SpaceAround">
+                    <Button x:Name="TypePrincipal" CornerRadius="10" BorderColor="Gray" BackgroundColor="#efeeee" Clicked="SelectType" Text="Type Principal"/>
+                    <Button x:Name="TypeSecondaire" CornerRadius="10" BorderColor="Gray" BackgroundColor="#efeeee" Clicked="SelectType" Text="Type Secondaire"/>
+                </FlexLayout>
+
                 <Slider x:Name="heightSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="Red" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="2000" Minimum="10" />
                 <Label x:Name="heightLabel" />
 

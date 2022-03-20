@@ -17,6 +17,7 @@ namespace PokApp.Views
         {
             InitializeComponent();
         }
+
         //Easter Egg
         void Accueil(object sender, System.EventArgs e)
         {

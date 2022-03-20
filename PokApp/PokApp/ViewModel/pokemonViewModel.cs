@@ -23,18 +23,20 @@ namespace PokApp.ViewModel
         {
             Pokemons = new ObservableCollection<Models.Pokemon>();
 
+            //Si la table est vide
             if (App.Database.GetPokemonAsync().Result.Count == 0)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
+                    int NombrePokemon = 50;
                     //Récupère et sauvegarde 50 Pokémons dans la base de données
-                    for (int i = 1; i <= 50; i++)
+                    for (int pokemonId = 1; pokemonId <= NombrePokemon; pokemonId++)
                     {
                         var TypeSecondaire = "";
                         var TalentSecondaire = "";
                         var TalentSecrete = "";
                         var pokemonList = new List<Models.Pokemon>();
-                        var PokemonApi = await Task.Run(() => pokeClient.GetResourceAsync<PokeApiNet.Pokemon>(i));
+                        var PokemonApi = await Task.Run(() => pokeClient.GetResourceAsync<PokeApiNet.Pokemon>(pokemonId));
                         PokemonSpecies Species = Task.Run(() => pokeClient.GetResourceAsync(PokemonApi.Species)).Result;
                         //Type Types = Task.Run(() => pokeClient.GetResourceAsync<Type>(0)).Result;
                         if (PokemonApi.Types.Count == 2)

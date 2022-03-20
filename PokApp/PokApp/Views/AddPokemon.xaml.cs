@@ -4,7 +4,6 @@ using PokApp.Models;
 using PokApp.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -49,15 +48,16 @@ namespace PokApp.Views
             }
         }
 
-        //Permet de choisir un type pour notre Pokemon
+        //Permet de choisir un type pour le Pokemon
         async void SelectType(object sender, EventArgs e)
         {
             var TypesList = new List<string>();
+            //Créé la liste des types
             for (int TypeId = 1; TypeId <= App.database.GetTypesCollectionAsync().Result.Count; TypeId++)
             {
                 TypesList.Add(App.Database.GetOneTypeAsync(TypeId).Name);
             }
-                
+            //Affiche la liste des types
             string action = await DisplayActionSheet("Selectionnez le type :", "Annuler", null, TypesList.ToArray());
             if (action != "Annuler")
             {
@@ -72,18 +72,43 @@ namespace PokApp.Views
             } 
         }
 
+        //Choix de la couleur du Pokémon
         async void SelectColor(object sender, EventArgs e)
         {
             var ColorsList = new List<string>();
+            //Créé la liste des couleurs
             for (int ColorId = 1; ColorId <= App.database.GetColorCollectionAsync().Result.Count; ColorId++)
             {
                 ColorsList.Add(App.Database.GetOneColorAsync(ColorId).Color);
             }
-
+            //Affiche la liste des couleurs
             string action = await DisplayActionSheet("Selectionnez l'espèce :", "Annuler", null, ColorsList.ToArray());
             if (action != "Annuler")
             {
                 Color.Text = action;
+            }
+        }
+
+        //Ajoute une image depuis la galerie
+        private async void AddAttachments(object sender, EventArgs e)
+        {
+            await CrossMedia.Current.Initialize();
+            if (!CrossMedia.Current.IsPickPhotoSupported)
+            {
+                await DisplayAlert("Erreur", "Votre téléphone ne supporte pas les téléchargement.", "OK");
+                return;
+            }
+
+            //Affiche l'image
+            mediaFile = await CrossMedia.Current.PickPhotoAsync();
+            PokemonImage.Source = mediaFile.Path;
+            PokemonImage.WidthRequest = 100;
+            PokemonImage.HeightRequest = 100;
+            AddImageButton.Text = "Changer l'image";
+
+            if (mediaFile == null)
+            {
+                return;
             }
         }
 
@@ -119,6 +144,7 @@ namespace PokApp.Views
                 PokemonImage.Source = "";
                 PokemonImage.WidthRequest = 0;
                 PokemonImage.HeightRequest = 0;
+                AddImageButton.Text = "Ajouter une image";
                 Color.Text = "Choisir couleur";
                 TypePrincipal.Text = "Type Principal";
                 TypeSecondaire.Text = "Type Secondaire";
@@ -132,29 +158,6 @@ namespace PokApp.Views
             {
                 await DisplayAlert("Oups !", "Vous avez oublié de choisir un nom ou un type à votre Pokemon.", "Je corrige cela");
             }
-        }
-    
-        //Ajoute une image depuis la galerie
-        private async void AddAttachments(object sender, EventArgs e)
-        {
-            await CrossMedia.Current.Initialize();
-            if (!CrossMedia.Current.IsPickPhotoSupported)
-            {
-                await DisplayAlert("Erreur", "Votre téléphone ne supporte pas les téléchargement.", "OK");
-                return;
-            }
-
-            //Affiche l'image
-            mediaFile = await CrossMedia.Current.PickPhotoAsync();
-            PokemonImage.Source = mediaFile.Path;
-            PokemonImage.WidthRequest = 100;
-            PokemonImage.HeightRequest = 100;
-            AddImageButton.Text = "Changer l'image";
-
-            if (mediaFile == null)
-            {
-                return;
-            }
-        }
+        }  
     }
 }

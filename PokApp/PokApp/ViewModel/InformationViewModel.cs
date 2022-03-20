@@ -13,29 +13,18 @@ namespace PokApp.ViewModel
         
         //Permet d'utiliser la PokéApi
         PokeApiClient pokeClient = new PokeApiClient();
-        public ObservableCollection<Models.CollectionTypes> AllTypes
-        {
-            get { return GetValue<ObservableCollection<Models.CollectionTypes>>(); }
-            set { SetValue(value); }
-        }
-
-        public ObservableCollection<Models.CollectionColor> AllSpecies
-        {
-            get { return GetValue<ObservableCollection<Models.CollectionColor>>(); }
-            set { SetValue(value); }
-        }
 
         public InformationViewModel()
         {
-            AllTypes = new ObservableCollection<Models.CollectionTypes>();
-            AllSpecies = new ObservableCollection<Models.CollectionColor>();
-
+            //Si la table est vide
             if (App.Database.GetTypesCollectionAsync().Result.Count == 0)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     var Types = new PokeApiNet.Type();
-                    for (int indexType = 1; indexType < 19; indexType++)
+                    int NombreTypes = 18;
+                    //Enregistre les Types
+                    for (int indexType = 1; indexType <= NombreTypes; indexType++)
                     {
                         Types = Task.Run(() => pokeClient.GetResourceAsync<PokeApiNet.Type>(indexType)).Result;
                         await App.Database.SaveTypeAsync(new Models.CollectionTypes
@@ -46,12 +35,15 @@ namespace PokApp.ViewModel
                 });
             }
 
+            //Si la table est vide
             if (App.Database.GetColorCollectionAsync().Result.Count == 0)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     var Color = new PokemonColor();
-                    for (int indexColor = 1; indexColor <= 10; indexColor++)
+                    int NombreCouleur = 10;
+                    //Enregistre les couleurs
+                    for (int indexColor = 1; indexColor <= NombreCouleur; indexColor++)
                     {
                         Color = Task.Run(() => pokeClient.GetResourceAsync<PokemonColor>(indexColor)).Result;
                         await App.Database.SaveColorAsync(new Models.CollectionColor

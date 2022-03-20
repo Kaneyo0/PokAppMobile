@@ -3,6 +3,8 @@ using Plugin.Media.Abstractions;
 using PokApp.Models;
 using PokApp.ViewModel;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,13 +18,6 @@ namespace PokApp.Views
         {
             InitializeComponent();
             BindingContext = InformationViewModel.instance;
-        }
-
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-            typesList.ItemsSource = await App.Database.GetTypesCollectionAsync();
-            //TypePrincipal.ItemsSource = await App.Database.GetTypesCollectionAsync();
         }
 
         //Actualise le texte des sliders en temps réel
@@ -54,17 +49,46 @@ namespace PokApp.Views
             }
         }
 
+        async void SelectType(object sender, EventArgs e)
+        {
+            var TypesList = new List<string>();
+            for (int TypeId = 1; TypeId <= App.database.GetTypesCollectionAsync().Result.Count; TypeId++)
+            {
+                TypesList.Add(App.Database.GetOneTypeAsync(TypeId).Name);
+            }
+                
+            string action = await DisplayActionSheet("Selectionnez le type :", "Annuler", null, TypesList.ToArray());
+            if (action != "Annuler")
+            {
+                if (TypePrincipal.Text == "Type Principal")
+                {
+                    TypePrincipal.Text = action;
+                }
+                else
+                {
+                    TypeSecondaire.Text = action;
+                }
+            } 
+        }
+
         //Ajoute un Pokemon dans la base de donnée
         async void SavePokemon(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(PokemonNameEntry.Text))
+            if (!string.IsNullOrWhiteSpace(PokemonNameEntry.Text) && TypePrincipal.Text != "Type Principal")
             {
                 string[] imageSource = PokemonImage.Source.ToString().Split(' ');
+                string typeSecondaire = "";
+                if (TypeSecondaire.Text != "Type Secondaire")
+                {
+                    typeSecondaire = TypeSecondaire.Text;
+                }
                 //Ajoute le nouveau Pokemon
                 await App.Database.SavePokemonAsync(new Pokemon
                 {
                     Name = PokemonNameEntry.Text,
                     Picture = imageSource[1],
+                    TypePrincipal = TypePrincipal.Text,
+                    TypeSecondaire = typeSecondaire,
                     Height = Convert.ToInt32(heightSlider.Value),
                     Weight = Convert.ToInt32(weightSlider.Value),
                     HP = Convert.ToInt32(hpSlider.Value),
@@ -78,6 +102,8 @@ namespace PokApp.Views
                 PokemonImage.Source = "";
                 PokemonImage.WidthRequest = 0;
                 PokemonImage.HeightRequest = 0;
+                TypePrincipal.Text = "Type Principal";
+                TypeSecondaire.Text = "Type Secondaire";
                 heightSlider.Value = 0.0;
                 weightSlider.Value = 0.0;
                 hpSlider.Value = 0.0;
@@ -86,7 +112,7 @@ namespace PokApp.Views
             }
             else
             {
-                await DisplayAlert("Oups !", "Vous avez oublié de choisir un nom à votre Pokemon.", "Je corrige cela");
+                await DisplayAlert("Oups !", "Vous avez oublié de choisir un nom ou un type à votre Pokemon.", "Je corrige cela");
             }
         }
     
@@ -103,8 +129,8 @@ namespace PokApp.Views
             //Affiche l'image
             mediaFile = await CrossMedia.Current.PickPhotoAsync();
             PokemonImage.Source = mediaFile.Path;
-            PokemonImage.WidthRequest = 150;
-            PokemonImage.HeightRequest = 150;
+            PokemonImage.WidthRequest = 100;
+            PokemonImage.HeightRequest = 100;
             AddImageButton.Text = "Changer l'image";
 
             if (mediaFile == null)

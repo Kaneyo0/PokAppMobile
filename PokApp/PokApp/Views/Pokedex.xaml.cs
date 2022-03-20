@@ -6,7 +6,6 @@ using Xamarin.Forms.Xaml;
 namespace PokApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-
     public partial class Pokedex : ContentPage
     {
         public Pokedex()

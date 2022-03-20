@@ -4,68 +4,42 @@
              x:Class="PokApp.Views.AddPokemon">
     <ContentPage.Resources>
         <ResourceDictionary>
-            
-
             <Style TargetType="Label">
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-
-    <StackLayout Margin="20,35,20,20">
+    <StackLayout Margin="20" VerticalOptions="FillAndExpand">
         <Entry  x:Name="PokemonNameEntry"
                 MaxLength="60"
                 Placeholder="Entrer le nom du Pokémon"
                 PlaceholderColor="DarkGray" />
 
-        <Image x:Name="PokemonImage" HorizontalOptions="Center"  Source=""></Image>
+        <Image x:Name="PokemonImage" HorizontalOptions="Center" Source=""></Image>
 
         <Button x:Name="AddImageButton" Text="Ajouter une image" Clicked="AddAttachments" />
-        <StackLayout>
-            <FlexLayout>
-                <Label HorizontalOptions="Center" FontSize="Medium" TextColor="black" FontAttributes="Bold" Text="Type Principal"/>
-                <Label x:Name="TypePrincipal"/>
-            </FlexLayout>
-            <Frame BackgroundColor="#60FFFFFF" CornerRadius="5" WidthRequest="50" HeightRequest="100">
-                <ListView x:Name="typesList" RowHeight="100">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <FlexLayout Direction="Row">
-                                    <Frame BackgroundColor="#60FFFFFF" CornerRadius="5" WidthRequest="100">
-                                        <Label FontSize="Medium" TextColor="black" FontAttributes="Bold" Text="{Binding Name}"/>
-                                    </Frame>
-                                </FlexLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Frame>
-        </StackLayout>
-
-        <FlexLayout>
-            <Label HorizontalOptions="Center" FontSize="Medium" TextColor="black" FontAttributes="Bold" Text="Type Secondaire"/>
-            <Label x:Name="TypeSecondaire"/>
+        <FlexLayout JustifyContent="SpaceAround">
+            <Button x:Name="TypePrincipal" CornerRadius="10" BorderColor="Gray" BackgroundColor="#efeeee" Clicked="SelectType" Text="Type Principal"/>
+            <Button x:Name="TypeSecondaire" CornerRadius="10" BorderColor="Gray" BackgroundColor="#efeeee" Clicked="SelectType" Text="Type Secondaire"/>
         </FlexLayout>
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout >
+                <Slider x:Name="heightSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="Red" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="2000" Minimum="10" />
+                <Label x:Name="heightLabel" />
 
-        <StackLayout Margin="10">
-            <Slider x:Name="heightSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="Red" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="2000" Minimum="10" />
-            <Label x:Name="heightLabel" />
+                <Slider x:Name="weightSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="Red" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="1000" Minimum="10" />
+                <Label x:Name="weightLabel" />
 
-            <Slider x:Name="weightSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="Red" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="1000" Minimum="10" />
-            <Label x:Name="weightLabel" />
+                <Slider x:Name="hpSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="Red" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="1000" Minimum="10" />
+                <Label x:Name="hpLabel" />
 
-            <Slider x:Name="hpSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="Red" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="1000" Minimum="10" />
-            <Label x:Name="hpLabel" />
+                <Slider x:Name="atkSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="Red" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="1000" Minimum="10" />
+                <Label x:Name="atkLabel" />
 
-            <Slider x:Name="atkSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="Red" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="1000" Minimum="10" />
-            <Label x:Name="atkLabel" />
-
-            <Slider x:Name="defSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="Red" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="1000" Minimum="10" />
-            <Label x:Name="defLabel" />
-
-            <Button Text="Ajouter Pokemon" Clicked="SavePokemon" />
-        </StackLayout>
-        
+                <Slider x:Name="defSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="Red" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="1000" Minimum="10" />
+                <Label x:Name="defLabel" />
+            </StackLayout>
+        </ScrollView>
+        <Button Text="Ajouter Pokemon" Clicked="SavePokemon" />
     </StackLayout>
 </ContentPage>

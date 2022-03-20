@@ -38,10 +38,16 @@ namespace PokApp.Models
             return _database.DeleteAsync(pokemon);
         }
 
-        //Récupère les Pokémons de la Base de données
+        //Récupère les Types de la Base de données
         public Task<List<CollectionTypes>> GetTypesCollectionAsync()
         {
             return _database.Table<CollectionTypes>().ToListAsync();
+        }
+
+        //Récupère un Pokemon en fonction de son Id
+        public CollectionTypes GetOneTypeAsync(int Id)
+        {
+            return _database.FindAsync<CollectionTypes>(Id).Result;
         }
 
         //Ajoute le Pokemon en paramètre, dans la base de données

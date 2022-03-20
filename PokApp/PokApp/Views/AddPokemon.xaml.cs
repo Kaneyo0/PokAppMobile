@@ -1,6 +1,7 @@
 ﻿using Plugin.Media;
 using Plugin.Media.Abstractions;
 using PokApp.Models;
+using PokApp.ViewModel;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -14,6 +15,14 @@ namespace PokApp.Views
         public AddPokemon()
         {
             InitializeComponent();
+            BindingContext = InformationViewModel.instance;
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            typesList.ItemsSource = await App.Database.GetTypesCollectionAsync();
+            //TypePrincipal.ItemsSource = await App.Database.GetTypesCollectionAsync();
         }
 
         //Actualise le texte des sliders en temps réel

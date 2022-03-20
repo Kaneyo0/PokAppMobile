@@ -4,9 +4,7 @@
              x:Class="PokApp.Views.AddPokemon">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style TargetType="Slider">
-                <Setter Property="Maximum" Value="255" />
-            </Style>
+            
 
             <Style TargetType="Label">
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
@@ -23,6 +21,32 @@
         <Image x:Name="PokemonImage" HorizontalOptions="Center"  Source=""></Image>
 
         <Button x:Name="AddImageButton" Text="Ajouter une image" Clicked="AddAttachments" />
+        <StackLayout>
+            <FlexLayout>
+                <Label HorizontalOptions="Center" FontSize="Medium" TextColor="black" FontAttributes="Bold" Text="Type Principal"/>
+                <Label x:Name="TypePrincipal"/>
+            </FlexLayout>
+            <Frame BackgroundColor="#60FFFFFF" CornerRadius="5" WidthRequest="50" HeightRequest="100">
+                <ListView x:Name="typesList" RowHeight="100">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <FlexLayout Direction="Row">
+                                    <Frame BackgroundColor="#60FFFFFF" CornerRadius="5" WidthRequest="100">
+                                        <Label FontSize="Medium" TextColor="black" FontAttributes="Bold" Text="{Binding Name}"/>
+                                    </Frame>
+                                </FlexLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Frame>
+        </StackLayout>
+
+        <FlexLayout>
+            <Label HorizontalOptions="Center" FontSize="Medium" TextColor="black" FontAttributes="Bold" Text="Type Secondaire"/>
+            <Label x:Name="TypeSecondaire"/>
+        </FlexLayout>
 
         <StackLayout Margin="10">
             <Slider x:Name="heightSlider" ThumbColor="#514cb6" MaximumTrackColor="Blue" MinimumTrackColor="Red" VerticalOptions="FillAndExpand" ValueChanged="OnSliderValueChanged" Maximum="2000" Minimum="10" />
@@ -42,5 +66,6 @@
 
             <Button Text="Ajouter Pokemon" Clicked="SavePokemon" />
         </StackLayout>
+        
     </StackLayout>
 </ContentPage>

@@ -12,6 +12,7 @@ namespace PokApp.Models
         {
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<Pokemon>().Wait();
+            _database.CreateTableAsync<CollectionTypes>().Wait();
         }
         //Récupère les Pokémons de la Base de données
         public Task<List<Pokemon>> GetPokemonAsync()
@@ -35,6 +36,18 @@ namespace PokApp.Models
         public Task<int> DeletePokemonAsync(Pokemon pokemon)
         {
             return _database.DeleteAsync(pokemon);
+        }
+
+        //Récupère les Pokémons de la Base de données
+        public Task<List<CollectionTypes>> GetTypesCollectionAsync()
+        {
+            return _database.Table<CollectionTypes>().ToListAsync();
+        }
+
+        //Ajoute le Pokemon en paramètre, dans la base de données
+        public Task<int> SaveTypeAsync(CollectionTypes Type)
+        {
+            return _database.InsertAsync(Type);
         }
     }
 }

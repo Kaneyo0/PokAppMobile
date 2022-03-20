@@ -36,6 +36,7 @@ namespace PokApp.ViewModel
                         var pokemonList = new List<Models.Pokemon>();
                         var PokemonApi = await Task.Run(() => pokeClient.GetResourceAsync<PokeApiNet.Pokemon>(i));
                         PokemonSpecies Species = Task.Run(() => pokeClient.GetResourceAsync(PokemonApi.Species)).Result;
+                        //Type Types = Task.Run(() => pokeClient.GetResourceAsync<Type>(0)).Result;
                         if (PokemonApi.Types.Count == 2)
                         {
                             TypeSecondaire = PokemonApi.Types[1].Type.Name;

@@ -49,6 +49,7 @@ namespace PokApp.Views
             }
         }
 
+        //Permet de choisir un type pour notre Pokemon
         async void SelectType(object sender, EventArgs e)
         {
             var TypesList = new List<string>();
@@ -71,6 +72,21 @@ namespace PokApp.Views
             } 
         }
 
+        async void SelectColor(object sender, EventArgs e)
+        {
+            var ColorsList = new List<string>();
+            for (int ColorId = 1; ColorId <= App.database.GetColorCollectionAsync().Result.Count; ColorId++)
+            {
+                ColorsList.Add(App.Database.GetOneColorAsync(ColorId).Color);
+            }
+
+            string action = await DisplayActionSheet("Selectionnez l'espèce :", "Annuler", null, ColorsList.ToArray());
+            if (action != "Annuler")
+            {
+                Color.Text = action;
+            }
+        }
+
         //Ajoute un Pokemon dans la base de donnée
         async void SavePokemon(object sender, EventArgs e)
         {
@@ -87,6 +103,7 @@ namespace PokApp.Views
                 {
                     Name = PokemonNameEntry.Text,
                     Picture = imageSource[1],
+                    Color = Color.Text,
                     TypePrincipal = TypePrincipal.Text,
                     TypeSecondaire = typeSecondaire,
                     Height = Convert.ToInt32(heightSlider.Value),
@@ -102,6 +119,7 @@ namespace PokApp.Views
                 PokemonImage.Source = "";
                 PokemonImage.WidthRequest = 0;
                 PokemonImage.HeightRequest = 0;
+                Color.Text = "Choisir couleur";
                 TypePrincipal.Text = "Type Principal";
                 TypeSecondaire.Text = "Type Secondaire";
                 heightSlider.Value = 0.0;
@@ -137,8 +155,6 @@ namespace PokApp.Views
             {
                 return;
             }
-
         }
-
     }
 }

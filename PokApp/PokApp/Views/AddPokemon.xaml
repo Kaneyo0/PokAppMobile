@@ -18,6 +18,7 @@
         <Image x:Name="PokemonImage" HorizontalOptions="Center" Source=""></Image>
 
         <Button x:Name="AddImageButton" Text="Ajouter une image" Clicked="AddAttachments" />
+        <Button x:Name="Color" CornerRadius="10" BorderColor="Gray" BackgroundColor="#efeeee" Clicked="SelectColor" Text="Choisir couleur"/>
         <FlexLayout JustifyContent="SpaceAround">
             <Button x:Name="TypePrincipal" CornerRadius="10" BorderColor="Gray" BackgroundColor="#efeeee" Clicked="SelectType" Text="Type Principal"/>
             <Button x:Name="TypeSecondaire" CornerRadius="10" BorderColor="Gray" BackgroundColor="#efeeee" Clicked="SelectType" Text="Type Secondaire"/>
